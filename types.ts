@@ -1,4 +1,6 @@
 
+export type ActivityLevel = 'sedentary' | 'light' | 'moderate' | 'active' | 'very_active';
+
 export interface UserProfile {
   name: string;
   weight: number; // in kg
@@ -6,15 +8,17 @@ export interface UserProfile {
   age: number;
   gender: 'male' | 'female';
   goal: 'lose' | 'maintain' | 'gain';
-  targetChangeKg?: number; // Metas de peso (ex: perder 5kg)
-  durationWeeks?: number;   // Em quanto tempo
+  activityLevel: ActivityLevel;
+  targetChangeKg?: number; 
+  durationWeeks?: number;   
 }
 
 export interface FoodItem {
   id: string;
   name: string;
-  calories: number; // per 100g or unit
+  calories: number; 
   unit: string;
+  isFavorite?: boolean;
 }
 
 export interface LoggedFood {
@@ -28,4 +32,13 @@ export interface LoggedFood {
 export interface DailyStats {
   waterDrank: number; // in ml
   foods: LoggedFood[];
+  completedExercises: string[];
+}
+
+export interface CustomExercise {
+  id: string;
+  name: string;
+  sets: string;
+  reps: string;
+  notes?: string;
 }
